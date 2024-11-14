@@ -12,7 +12,6 @@ import {
 } from 'chart.js';
 import './App.css';
 
-// Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 function App() {
@@ -69,17 +68,17 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1 className="app-title">Receipt Analyzer</h1>
-      <div className="upload-section">
-        <input type="file" multiple onChange={handleFileChange} />
-        <button onClick={handleUpload}>Upload Receipts</button>
+      <h1 className="app-title slide-down">Receipt Analyzer</h1>
+      <div className="upload-section fade-in">
+        <input type="file" multiple onChange={handleFileChange} className="file-input" />
+        <button onClick={handleUpload} className="upload-button">Analyze Receipts</button>
       </div>
       
       {receiptData.length > 0 && (
-        <div className="results-section">
+        <div className="results-section fade-in">
           <h2>Parsed Receipt Data</h2>
           {receiptData.map((receipt, index) => (
-            <div key={index} className="receipt">
+            <div key={index} className="receipt fade-in">
               <h3>Date: {receipt.Date || "Unknown"}</h3>
               <ul>
                 {receipt.Items.map((item, i) => (
@@ -95,7 +94,7 @@ function App() {
       )}
 
       {chartData && (
-        <div className="chart-container">
+        <div className="chart-container fade-in">
           <h2>Spending Trends</h2>
           <Bar data={chartData} options={{ responsive: true }} />
         </div>
